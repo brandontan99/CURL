@@ -122,7 +122,7 @@ def main():
         criterion = model.CURLLoss()
 
         inference_evaluator = metric.Evaluator(
-            criterion, inference_data_loader, "test", log_dirpath)
+            criterion, inference_data_loader, "test", log_dirpath, inference_img_dirpath)
 
         inference_evaluator.evaluate(net, epoch=0)
 
