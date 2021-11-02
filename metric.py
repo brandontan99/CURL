@@ -25,7 +25,7 @@ np.set_printoptions(threshold=sys.maxsize)
 
 class Evaluator():
 
-    def __init__(self, criterion, data_loader, split_name, log_dirpath):
+    def __init__(self, criterion, data_loader, split_name, log_dirpath, inference_img_dirpath):
         """Initialisation function for the data loader
         :param data_dirpath: directory containing the data
         :param img_ids_filepath: file containing the ids of the images to load
@@ -37,6 +37,7 @@ class Evaluator():
         self.data_loader = data_loader
         self.split_name = split_name
         self.log_dirpath = log_dirpath
+        self.inference_img_dirpath = inference_img_dirpath
 
     def evaluate(self, net, epoch=0):
         """Evaluates a network on a specified split of a dataset e.g. test, validation
@@ -136,7 +137,7 @@ class Evaluator():
                         net_output_img_example = (
                             net_output_img_example_rgb[0, 0:3, :, :] * 255).astype('uint8')
 
-                        plt.imsave(self.data_dirpath + "/" + name,
+                        plt.imsave(self.inference_img_dirpath + "/" + name,
                             ImageProcessing.swapimdims_3HW_HW3(net_output_img_example))
 
                     del net_output_img_example_numpy
