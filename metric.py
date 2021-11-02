@@ -137,7 +137,7 @@ class Evaluator():
                         net_output_img_example = (
                             net_output_img_example_rgb[0, 0:3, :, :] * 255).astype('uint8')
 
-                        plt.imsave(str(self.inference_img_dirpath) + "/" + name,
+                        plt.imsave(str(self.inference_img_dirpath) + "/" + name[0],
                             ImageProcessing.swapimdims_3HW_HW3(net_output_img_example))
 
                     del net_output_img_example_numpy
